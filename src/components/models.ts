@@ -6,3 +6,12 @@ export interface Todo {
 export interface Meta {
   totalCount: number;
 }
+
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
