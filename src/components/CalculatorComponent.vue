@@ -213,6 +213,9 @@ export default defineComponent({
         state.current = '';
         state.operatorClicked = false;
       }
+      if (state.current === '0') {
+        state.current = number;
+      }
       state.current = `${state.current}${number}`;
     }
 
@@ -228,35 +231,38 @@ export default defineComponent({
     }
 
     function divide() {
-      // state.operator = (a: number, b: number) => a / b;
       state.operator = '/';
       setPrevious();
     }
 
     function multiply() {
-      // state.operator = (a: number, b: number) => a * b;
       state.operator = '*';
       setPrevious();
     }
 
     function subtract() {
-      // state.operator = (a: number, b: number) => a - b;
       state.operator = '-';
       setPrevious();
     }
 
     function sum() {
-      // state.operator = (a: number, b: number) => a + b;
       state.operator = '+';
       setPrevious();
     }
 
     function equal() {
-      state.current = eval(
-        `${parseFloat(state.previous)}${state.operator}${parseFloat(
-          state.current
-        )}`
-      );
+      if (state.operator === '/') {
+        state.current = parseFloat(state.previous) / parseFloat(state.current);
+      }      
+      if (state.operator === '*') {
+        state.current = parseFloat(state.previous) * parseFloat(state.current);
+      }      
+      if (state.operator === '+') {
+        state.current = parseFloat(state.previous) + parseFloat(state.current);
+      }      
+      if (state.operator === '-') {
+        state.current = parseFloat(state.previous) - parseFloat(state.current);
+      }      
       state.previous = '';
     }
 
