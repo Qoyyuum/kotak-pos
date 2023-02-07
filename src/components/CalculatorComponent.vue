@@ -1,6 +1,8 @@
 <template>
   <div class="q-pa-md q-gutter-y-xs column items-stretch">
     <div id="calculated" class="items-end">
+      <h4 class="col-shrink">{{ state.previous }}</h4>
+      <h4 class="col-shrink">{{ state.operator }}</h4>
       <h3 class="col-shrink">{{ state.current }}</h3>
     </div>
     <q-btn-group>
@@ -252,18 +254,19 @@ export default defineComponent({
 
     function equal() {
       if (state.operator === '/') {
-        state.current = parseFloat(state.previous) / parseFloat(state.current);
+        state.current = (parseFloat(state.previous) / parseFloat(state.current)).toString();
       }      
       if (state.operator === '*') {
-        state.current = parseFloat(state.previous) * parseFloat(state.current);
+        state.current = (parseFloat(state.previous) * parseFloat(state.current)).toString();
       }      
       if (state.operator === '+') {
-        state.current = parseFloat(state.previous) + parseFloat(state.current);
+        state.current = (parseFloat(state.previous) + parseFloat(state.current)).toString();
       }      
       if (state.operator === '-') {
-        state.current = parseFloat(state.previous) - parseFloat(state.current);
+        state.current = (parseFloat(state.previous) - parseFloat(state.current)).toString();
       }      
-      state.previous = '';
+      state.previous = `${parseFloat(state.current)}${state.operator}${parseFloat(state.current)}`;
+      state.operator = '';
     }
 
     return {
