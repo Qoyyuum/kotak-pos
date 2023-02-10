@@ -252,17 +252,25 @@ export default defineComponent({
 
     function equal() {
       if (state.operator === '/') {
-        state.current = parseFloat(state.previous) / parseFloat(state.current);
-      }      
+        state.current = (
+          parseFloat(state.previous) / parseFloat(state.current)
+        ).toString();
+      }
       if (state.operator === '*') {
-        state.current = parseFloat(state.previous) * parseFloat(state.current);
-      }      
+        state.current = (
+          parseFloat(state.previous) * parseFloat(state.current)
+        ).toString();
+      }
       if (state.operator === '+') {
-        state.current = parseFloat(state.previous) + parseFloat(state.current);
-      }      
+        state.current = (
+          parseFloat(state.previous) + parseFloat(state.current)
+        ).toString();
+      }
       if (state.operator === '-') {
-        state.current = parseFloat(state.previous) - parseFloat(state.current);
-      }      
+        state.current = (
+          parseFloat(state.previous) - parseFloat(state.current)
+        ).toString();
+      }
       state.previous = '';
     }
 
